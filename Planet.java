@@ -3,15 +3,12 @@ import java.util.Random;
 
 public class Planet {
 	private Graphic graphic;
-	private Random rng;
-	private ArrayList<Planet> planets;
 	private boolean collision;
 	private boolean isDestination;
 
 	public Planet(float x, float y){
 		graphic = new Graphic("PLANET");
 		graphic.setPosition(x, y);
-		rng = new Random();
 	    collision = false;
 	    isDestination = false;
 	}
@@ -71,7 +68,6 @@ public class Planet {
 		
 		return false;
 	}
-	
 }
 
 
