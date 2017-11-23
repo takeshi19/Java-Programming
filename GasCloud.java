@@ -1,5 +1,4 @@
 public class GasCloud {
-	
 	private Graphic graphic;
 	private float rotationSpeed;
 	private boolean shouldRemove = false;
@@ -16,25 +15,19 @@ public class GasCloud {
 		rotationSpeed = 0.001f * time;
 		graphic.setDirection(graphic.getDirection() + rotationSpeed);
 		graphic.draw();
-		return;
 	}
 	
-
 	public void handleFueling(Taxi taxi){
-		if(taxi.checkCollision(graphic)){
+		if (taxi.checkCollision(graphic)){
 			taxi.addFuel(20f); 
 			shouldRemove = true;
 		}
-		else
+		else {
 			shouldRemove = false;
-		return;
+		}
 	}
 	
 	public boolean shouldRemove(){
 		return shouldRemove;
-	}
-	
+	}	
 }
-
-
-

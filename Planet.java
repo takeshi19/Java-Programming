@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Planet {
-	private Graphic graphic;
+	private Graphic graphic;	//"Encapsulating" variables
 	private boolean collision;
 	private boolean isDestination;
 
@@ -22,20 +22,19 @@ public class Planet {
 	public Planet(Random rng, ArrayList<Planet> planets){
 		graphic = new Graphic("PLANET");
 
-		do{ 
+		do { 
 			collision = false; //The existing planet uses its random position when the do-while loop breaks.
 			graphic.setPosition(rng.nextFloat() * GameEngine.getWidth(), rng.nextFloat() * GameEngine.getHeight());
 			for(int i = 0; i < planets.size(); i++){
 				if(graphic.isCollidingWith(planets.get(i).graphic))
 					collision = true; //If the planets did collide, then this loop keeps running to get new random positions to place them at.
 			}
-		}while(collision);
+		} while(collision);
 		
 	}
 	
 	public void update(int time){
 		graphic.draw(); //draws the planets to the screen
-		return;
 	}
 	
 	/**
@@ -45,15 +44,14 @@ public class Planet {
 	 * @param isDestination
 	 */
 	public void setDestination(boolean isDestination){
-		if(isDestination == true){
-			this.isDestination = true;//Set the destination of where the taxi should travel 
+		if (isDestination == true) {
+			this.isDestination = true; //Set the destination of where the taxi should travel 
 			graphic.setAppearance("DESTINATION");
 		}
-		else if (isDestination == false){ //if the taxi already reached this destination, then its no longer activated as a destination.
+		else if (isDestination == false) { //if the taxi already reached this destination, then its no longer activated as a destination.
 			this.isDestination = false;
 			graphic.setAppearance("PLANET");
 		}
-		return;
 	}
 	
 	/**
@@ -63,11 +61,9 @@ public class Planet {
 	public boolean handleLanding(Taxi taxi){
 		if(taxi.checkCollision(graphic) && taxi.isTravellingAtWarp()) 
 			taxi.crash();
-		else if(taxi.checkCollision(graphic) && isDestination)
+		else if (taxi.checkCollision(graphic) && this.isDestination) { 
 			return true;
-		
+		}
 		return false;
 	}
 }
-
-

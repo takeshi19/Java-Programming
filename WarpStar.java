@@ -17,9 +17,12 @@ public class WarpStar {
 	 * @param taxi
 	 */
 	public void handleNavigation(Taxi taxi){
-		if(taxi.getFuel() > 0f) 
-			if(graphic.isCoveringPosition(GameEngine.getMouseX(), GameEngine.getMouseY()))
-				if(GameEngine.isKeyPressed("MOUSE")) 
+		if (taxi.getFuel() > 0f) {
+			if (graphic.isCoveringPosition(GameEngine.getMouseX(), GameEngine.getMouseY())) {
+				if (GameEngine.isKeyPressed("MOUSE"))  {
 					taxi.setWarp(graphic.getX(), graphic.getY());
-		}
+				}
+			}
+		}		
 	}
+}
